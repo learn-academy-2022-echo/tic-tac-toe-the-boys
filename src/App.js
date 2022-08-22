@@ -5,19 +5,23 @@ import './App.css'
 const App = () => {
   const [squares, setSquares] = useState(Array(9).fill(null))
   const [player, setPlayer] = useState(1)
+  const [counter, setCounter] = useState(0)
 
   const handleGame = (index) => {
-    // const winner = calculateWinner(squares)
-    let newSquares = [...squares]
-    // console.log(index)
-    // console.log("Player: " + player)
+    if (calculateWinner(squares) === "X") {
+      alert("Winner is Player One")
+      return;
+    } else if (calculateWinner(squares) === "O") {
+      alert("Winner is Player Two")
+      return
+    }
 
-    // if (winner === "X") {
-    //   alert("Winner is: Player 1")
-    // } else if (winner === "O") {
-    //   alert("Winner is: Player 2")
-    // }
-
+    let newSquares = [...squares] 
+      if(counter === squares.length - 1){
+        alert("Game Over")
+      }
+      console.log(counter)
+    
 
       if (player === 1) {
         if (newSquares[index] === "X") {
@@ -27,6 +31,7 @@ const App = () => {
         } else {
           newSquares[index] = "X"
           setSquares(newSquares)
+          setCounter(counter+1)
           setPlayer(2)
         }
       }
@@ -39,6 +44,7 @@ const App = () => {
         } else {
           newSquares[index] = "O"
           setSquares(newSquares)
+          setCounter(counter+1)
           setPlayer(1)
         }
       }
@@ -69,6 +75,12 @@ const App = () => {
     return null;
   }
 
+    const handleReset = () => {
+      setPlayer(1)
+      setCounter(0)
+      setSquares(squares.fill(null))
+    }
+
   return (
     <>
       <h1>Tic Tac Toe</h1>
@@ -79,6 +91,10 @@ const App = () => {
         )
       })}
       </div>
+     
+    <div className="button">
+    <button onClick ={handleReset}>Reset</button> 
+    </div>
     </>
   )
 }
