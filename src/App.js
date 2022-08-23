@@ -90,7 +90,7 @@ const App = () => {
       <div className="gameboard">
       {squares.map((value, index) => {
         return (
-          <Square squares={squares} handleGame={handleGame} value={value} index={index}/>
+          <Square handleGame={handleGame} value={value} index={index}/>
         )
       })}
       </div>
