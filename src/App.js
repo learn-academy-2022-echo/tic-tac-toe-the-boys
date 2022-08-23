@@ -2,12 +2,6 @@ import React, { useState } from 'react'
 import Square from './components/Square'
 import './App.css'
 
-// Player 1 wins XXX
-// Player 2 wins XXX
-// Player wins on last move XXX
-// Alert only pops up on next user click, even after winner is decided.
-
-
 
 const App = () => {
   const [squares, setSquares] = useState(Array(9).fill(null))
@@ -18,6 +12,9 @@ const App = () => {
 
   const handleGame = (index) => {
 
+    //Player 1 = X
+    //Player 2 = O
+    // Winner alerts
     if (calculateWinner(squares) === "X") {
       alert("Winner is Player One")
       return
@@ -26,7 +23,7 @@ const App = () => {
       return
     }
 
-    // Counter variable will be compared against length of squares array - 1 to assess if any more moves can be made.
+    // Counter variable will be compared against length of squares array to assess if any more moves can be made.
     if(counter === squares.length) {
       alert("Game Over")
     }
